@@ -4,7 +4,6 @@ Version: 0.1
 Author: Hossein Beidaghydizaji
 Author-email: beidaghydizaji@gmx.de
 License-File: LICENSE
-Requires-Dist: pyproject.toml
 Requires-Dist: ipykernel
 Requires-Dist: pandas
 Requires-Dist: numpy
@@ -12,6 +11,7 @@ Requires-Dist: scikit-learn
 Requires-Dist: matplotlib
 Requires-Dist: seaborn
 Requires-Dist: python-dotenv
+Requires-Dist: pymongo[srv]==3.6
 Requires-Dist: pymongo
 Requires-Dist: certifi
 Dynamic: author
