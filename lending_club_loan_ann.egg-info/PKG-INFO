@@ -1,0 +1,20 @@
+Metadata-Version: 2.4
+Name: lending_club_loan_ann
+Version: 0.1
+Author: Hossein Beidaghydizaji
+Author-email: beidaghydizaji@gmx.de
+License-File: LICENSE
+Requires-Dist: pyproject.toml
+Requires-Dist: ipykernel
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: scikit-learn
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: python-dotenv
+Requires-Dist: pymongo
+Requires-Dist: certifi
+Dynamic: author
+Dynamic: author-email
+Dynamic: license-file
+Dynamic: requires-dist

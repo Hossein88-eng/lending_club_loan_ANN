@@ -1,3 +1,4 @@
+pyproject.toml
 ipykernel
 pandas
 numpy
@@ -7,5 +8,3 @@ seaborn
 python-dotenv
 pymongo
 certifi
-
--e .
