@@ -1,0 +1,93 @@
+columns:
+  - loan_amnt: float64
+  - term: int64
+  - int_rate: float64
+  - installment: float64
+  - annual_inc: float64
+  - dti: float64
+  - open_acc: float64
+  - pub_rec: float64
+  - revol_bal: float64
+  - total_acc: float64
+  - mort_acc: float64
+  - loan_repaid: int64
+  - A2: int64
+  - A3: int64
+  - A4: int64
+  - A5: int64
+  - B1: int64
+  - B2: int64
+  - B3: int64
+  - B4: int64
+  - B5: int64
+  - C1: int64
+  - C2: int64
+  - C3: int64
+  - C4: int64
+  - C5: int64
+  - D1: int64
+  - D2: int64
+  - D3: int64
+  - D4: int64
+  - D5: int64
+  - E1: int64
+  - E2: int64
+  - E3: int64
+  - E4: int64
+  - E5: int64
+  - F1: int64
+  - F2: int64
+  - F3: int64
+  - F4: int64
+  - F5: int64
+  - G1: int64
+  - G2: int64
+  - G3: int64
+  - G4: int64
+  - G5: int64
+  - verification_status_Source Verified: int64
+  - verification_status_Verified: int64
+  - application_type_INDIVIDUAL: int64
+  - application_type_JOINT: int64
+  - initial_list_status_w: int64
+  - purpose_credit_card: int64
+  - purpose_debt_consolidation: int64
+  - purpose_educational: int64
+  - purpose_home_improvement: int64
+  - purpose_house: int64
+  - purpose_major_purchase: int64
+  - purpose_medical: int64
+  - purpose_moving: int64
+  - purpose_other: int64
+  - purpose_renewable_energy: int64
+  - purpose_small_business: int64
+  - purpose_vacation: int64
+  - purpose_wedding: int64
+  - OTHER: int64
+  - OWN: int64
+  - RENT: int64
+  - 05113: int64
+  - 11650: int64
+  - 22690: int64
+  - 29597: int64
+  - 30723: int64
+  - 48052: int64
+  - 70466: int64
+  - 86630: int64
+  - 93700: int64
+  - earliest_cr_year: int64
+
+numerical_columns:
+  - loan_amnt
+  - term
+  - int_rate
+  - installment
+  - annual_inc
+  - dti
+  - open_acc
+  - pub_rec
+  - revol_bal
+  - total_acc
+  - mort_acc
+  - loan_repaid
+  - earliest_cr_year

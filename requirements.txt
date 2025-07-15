@@ -8,5 +8,8 @@ python-dotenv
 pymongo[srv]==3.6
 pymongo
 certifi
+dill
+scipy
+pyaml
 
 -e .

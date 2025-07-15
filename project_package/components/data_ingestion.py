@@ -43,6 +43,8 @@ class DataIngestion:
             collection_name=self.data_ingestion_config.collection_name
             self.mongo_client=pymongo.MongoClient(MONGO_DB_URL)
             collection=self.mongo_client[database_name][collection_name]
+            print("Querying database:", database_name)
+            print("Querying collection:", collection_name)
             df=pd.DataFrame(list(collection.find()))
             if "_id" in df.columns.to_list():
                 df=df.drop(columns=["_id"],axis=1)
@@ -86,15 +88,23 @@ class DataIngestion:
 
         except Exception as e:
             raise ProjectException(e,sys)
-        
-        
+
+
+
     def initiate_data_ingestion(self):
         try:
-            dataframe=self.export_collection_as_dataframe()
-            dataframe=self.export_data_into_feature_store(dataframe)
-            
-            dataingestionartifact=DataIngestionArtifact(trained_file_path=self.data_ingestion_config.training_file_path,
-                                                        test_file_path=self.data_ingestion_config.testing_file_path)
+            dataframe = self.export_collection_as_dataframe()
+            print("After export_collection_as_dataframe:", dataframe.shape)
+
+            dataframe = self.export_data_into_feature_store(dataframe)
+            print("After export_data_into_feature_store:", dataframe.shape)
+
+            self.split_data_as_train_test(dataframe)
+
+            dataingestionartifact = DataIngestionArtifact(
+                trained_file_path=self.data_ingestion_config.training_file_path,
+                test_file_path=self.data_ingestion_config.testing_file_path
+            )
             return dataingestionartifact
 
         except Exception as e:

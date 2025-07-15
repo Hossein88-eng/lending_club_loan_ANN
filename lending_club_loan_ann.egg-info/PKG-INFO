@@ -14,6 +14,9 @@ Requires-Dist: python-dotenv
 Requires-Dist: pymongo[srv]==3.6
 Requires-Dist: pymongo
 Requires-Dist: certifi
+Requires-Dist: dill
+Requires-Dist: scipy
+Requires-Dist: pyaml
 Dynamic: author
 Dynamic: author-email
 Dynamic: license-file
