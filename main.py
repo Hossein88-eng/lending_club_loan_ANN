@@ -5,8 +5,11 @@ from project_package.logging.logger import logging
 from project_package.components.data_ingestion import DataIngestion
 from project_package.components.data_validation import DataValidation
 from project_package.components.data_transformation import DataTransformation
+from project_package.components.model_trainer import ModelTrainer
 from project_package.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig
 from project_package.entity.config_entity import TrainingPipelineConfig
+from project_package.entity.config_entity import ModelTrainerConfig
+
 
 
 if __name__=='__main__':
@@ -32,6 +35,13 @@ if __name__=='__main__':
         data_transformation_artifact = data_transformation.initiate_data_transformation()
         logging.info("Data transformation completed")
         print(data_transformation_artifact)
+
+        logging.info("Model training started...")
+        model_trainer_config = ModelTrainerConfig(trainingpipelineconfig)
+        model_trainer = ModelTrainer(model_trainer_config, data_transformation_artifact)
+        model_trainer_artifact = model_trainer.initiate_model_trainer()
+        logging.info("Model training completed!")
+        print(model_trainer_artifact)
 
     except Exception as e:
            raise ProjectException(e,sys)

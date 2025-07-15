@@ -1,0 +1,31 @@
+[ 2025-07-16 00:14:54,662 ] 160 numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+[ 2025-07-16 00:15:00,569 ] 20 root - INFO - Data ingestion started...
+[ 2025-07-16 00:15:08,558 ] 74 root - INFO - Performed train test split on the dataframe...
+[ 2025-07-16 00:15:08,558 ] 75 root - INFO - Train set shape: (31682, 77)
+[ 2025-07-16 00:15:08,558 ] 76 root - INFO - Test set shape: (7921, 77)
+[ 2025-07-16 00:15:08,558 ] 80 root - INFO - Exporting train and test file path...
+[ 2025-07-16 00:15:09,090 ] 87 root - INFO - Exported train and test file path.
+[ 2025-07-16 00:15:09,106 ] 22 root - INFO - Data ingestion completed
+[ 2025-07-16 00:15:09,106 ] 27 root - INFO - Data validation started...
+[ 2025-07-16 00:15:09,339 ] 46 root - INFO - Required number of columns: 2
+[ 2025-07-16 00:15:09,339 ] 47 root - INFO - Data frame has columns: 77
+[ 2025-07-16 00:15:09,339 ] 46 root - INFO - Required number of columns: 2
+[ 2025-07-16 00:15:09,339 ] 47 root - INFO - Data frame has columns: 77
+[ 2025-07-16 00:15:11,094 ] 29 root - INFO - Data validation completed
+[ 2025-07-16 00:15:11,096 ] 34 root - INFO - Data transformation started...
+[ 2025-07-16 00:15:11,096 ] 55 root - INFO - Entered initiate_data_transformation method of DataTransformation class
+[ 2025-07-16 00:15:11,096 ] 57 root - INFO - Starting data transformation...
+[ 2025-07-16 00:15:11,307 ] 65 root - INFO - Entered the save_object method of MainUtils class
+[ 2025-07-16 00:15:11,309 ] 69 root - INFO - Exited the save_object method of MainUtils class
+[ 2025-07-16 00:15:11,381 ] 45 root - INFO - Entered get_data_transformer_object method of Transformation class
+[ 2025-07-16 00:15:11,381 ] 48 root - INFO - Initialise KNNImputer with {'missing_values': nan, 'n_neighbors': 3, 'weights': 'uniform'}
+[ 2025-07-16 00:15:11,533 ] 65 root - INFO - Entered the save_object method of MainUtils class
+[ 2025-07-16 00:15:11,556 ] 69 root - INFO - Exited the save_object method of MainUtils class
+[ 2025-07-16 00:15:11,556 ] 65 root - INFO - Entered the save_object method of MainUtils class
+[ 2025-07-16 00:15:11,579 ] 69 root - INFO - Exited the save_object method of MainUtils class
+[ 2025-07-16 00:15:11,583 ] 36 root - INFO - Data transformation completed
+[ 2025-07-16 00:15:11,583 ] 39 root - INFO - Model training started...
+[ 2025-07-16 00:15:11,594 ] 177 root - INFO - Normalizing the data started...
+[ 2025-07-16 00:15:11,614 ] 181 root - INFO - Normalization of data completed successfully.
+[ 2025-07-16 00:15:11,624 ] 189 root - INFO - X_train: (31682, 76), y_train: (31682,), X_test: (7921, 76), y_test: (7921,)
+[ 2025-07-16 00:15:11,624 ] 192 root - INFO - Training the model stated...

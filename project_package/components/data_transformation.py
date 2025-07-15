@@ -56,6 +56,8 @@ class DataTransformation:
         try:
             logging.info("Starting data transformation...")
             train_df = DataTransformation.read_data(self.data_validation_artifact.valid_train_file_path)
+            all_columns = list(train_df.columns)
+            save_object(self.data_transformation_config.transformed_column_file_path, all_columns)
             test_df = DataTransformation.read_data(self.data_validation_artifact.valid_test_file_path)
 
             # training dataframe

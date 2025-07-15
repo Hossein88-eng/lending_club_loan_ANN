@@ -12,7 +12,9 @@ project_package/__init__.py
 project_package/cloud/__init__.py
 project_package/components/__init__.py
 project_package/components/data_ingestion.py
+project_package/components/data_transformation.py
 project_package/components/data_validation.py
+project_package/components/model_trainer.py
 project_package/constants/__init__.py
 project_package/constants/training_pipeline/__init__.py
 project_package/entity/__init__.py
@@ -26,3 +28,8 @@ project_package/pipleline/__init__.py
 project_package/utils/__init__.py
 project_package/utils/main_utils/__init__.py
 project_package/utils/main_utils/utils.py
+project_package/utils/ml_utils/__init__.py
+project_package/utils/ml_utils/metric/__init__.py
+project_package/utils/ml_utils/metric/classification_metric.py
+project_package/utils/ml_utils/model/__init__.py
+project_package/utils/ml_utils/model/estimator.py

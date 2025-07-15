@@ -1,0 +1,231 @@
+'05113':
+  drift_status: false
+  p_value: 0.9999989637131643
+'11650':
+  drift_status: false
+  p_value: 0.9999999999999438
+'22690':
+  drift_status: false
+  p_value: 0.9999970499425976
+'29597':
+  drift_status: false
+  p_value: 0.998666039820217
+'30723':
+  drift_status: false
+  p_value: 1.0
+'48052':
+  drift_status: false
+  p_value: 0.9999999999999982
+'70466':
+  drift_status: false
+  p_value: 0.9999979518002781
+'86630':
+  drift_status: false
+  p_value: 1.0
+'93700':
+  drift_status: false
+  p_value: 1.0
+A2:
+  drift_status: false
+  p_value: 1.0
+A3:
+  drift_status: false
+  p_value: 0.9999999999999765
+A4:
+  drift_status: false
+  p_value: 1.0
+A5:
+  drift_status: false
+  p_value: 1.0
+B1:
+  drift_status: false
+  p_value: 0.9999999786858285
+B2:
+  drift_status: false
+  p_value: 0.9999030886520297
+B3:
+  drift_status: false
+  p_value: 0.9999999999999897
+B4:
+  drift_status: false
+  p_value: 1.0
+B5:
+  drift_status: false
+  p_value: 0.999999827251672
+C1:
+  drift_status: false
+  p_value: 1.0
+C2:
+  drift_status: false
+  p_value: 1.0
+C3:
+  drift_status: false
+  p_value: 1.0
+C4:
+  drift_status: false
+  p_value: 0.99999999999727
+C5:
+  drift_status: false
+  p_value: 1.0
+D1:
+  drift_status: false
+  p_value: 1.0
+D2:
+  drift_status: false
+  p_value: 1.0
+D3:
+  drift_status: false
+  p_value: 0.9997516149354663
+D4:
+  drift_status: false
+  p_value: 0.9999999999999438
+D5:
+  drift_status: false
+  p_value: 0.9999999999999488
+E1:
+  drift_status: false
+  p_value: 1.0
+E2:
+  drift_status: false
+  p_value: 1.0
+E3:
+  drift_status: false
+  p_value: 1.0
+E4:
+  drift_status: false
+  p_value: 0.9999999999647816
+E5:
+  drift_status: false
+  p_value: 1.0
+F1:
+  drift_status: false
+  p_value: 1.0
+F2:
+  drift_status: false
+  p_value: 1.0
+F3:
+  drift_status: false
+  p_value: 1.0
+F4:
+  drift_status: false
+  p_value: 1.0
+F5:
+  drift_status: false
+  p_value: 1.0
+G1:
+  drift_status: false
+  p_value: 1.0
+G2:
+  drift_status: false
+  p_value: 1.0
+G3:
+  drift_status: false
+  p_value: 1.0
+G4:
+  drift_status: false
+  p_value: 1.0
+G5:
+  drift_status: false
+  p_value: 1.0
+OTHER:
+  drift_status: false
+  p_value: 1.0
+OWN:
+  drift_status: false
+  p_value: 1.0
+RENT:
+  drift_status: false
+  p_value: 0.9999921872882961
+annual_inc:
+  drift_status: false
+  p_value: 0.7516994797793174
+application_type_INDIVIDUAL:
+  drift_status: false
+  p_value: 1.0
+application_type_JOINT:
+  drift_status: false
+  p_value: 1.0
+dti:
+  drift_status: false
+  p_value: 0.1703591078090383
+earliest_cr_year:
+  drift_status: false
+  p_value: 0.7052233793293532
+initial_list_status_w:
+  drift_status: false
+  p_value: 1.0
+installment:
+  drift_status: false
+  p_value: 0.8766235373946334
+int_rate:
+  drift_status: false
+  p_value: 0.2736304541329141
+loan_amnt:
+  drift_status: false
+  p_value: 0.5681744808527716
+loan_repaid:
+  drift_status: false
+  p_value: 0.998545633937291
+mort_acc:
+  drift_status: false
+  p_value: 0.9731804216520311
+open_acc:
+  drift_status: false
+  p_value: 0.608181434527618
+pub_rec:
+  drift_status: false
+  p_value: 0.9999999291824418
+purpose_credit_card:
+  drift_status: false
+  p_value: 0.8817368370991148
+purpose_debt_consolidation:
+  drift_status: false
+  p_value: 0.9972419411956743
+purpose_educational:
+  drift_status: false
+  p_value: 1.0
+purpose_home_improvement:
+  drift_status: false
+  p_value: 0.9999997611986747
+purpose_house:
+  drift_status: false
+  p_value: 1.0
+purpose_major_purchase:
+  drift_status: false
+  p_value: 1.0
+purpose_medical:
+  drift_status: false
+  p_value: 1.0
+purpose_moving:
+  drift_status: false
+  p_value: 0.9999999999987436
+purpose_other:
+  drift_status: false
+  p_value: 1.0
+purpose_renewable_energy:
+  drift_status: false
+  p_value: 1.0
+purpose_small_business:
+  drift_status: false
+  p_value: 1.0
+purpose_vacation:
+  drift_status: false
+  p_value: 1.0
+purpose_wedding:
+  drift_status: false
+  p_value: 1.0
+revol_bal:
+  drift_status: false
+  p_value: 0.184308203862538
+term:
+  drift_status: false
+  p_value: 0.9913787029785824
+total_acc:
+  drift_status: false
+  p_value: 0.978306578801695
+verification_status_Source Verified:
+  drift_status: false
+  p_value: 0.7242034973082051
+verification_status_Verified:
+  drift_status: false
+  p_value: 0.330524503739285

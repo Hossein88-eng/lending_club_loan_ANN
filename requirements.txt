@@ -11,5 +11,9 @@ certifi
 dill
 scipy
 pyaml
+tensorflow==2.17.0
+mlflow
+
+
 
 -e .

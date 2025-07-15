@@ -97,7 +97,7 @@ def load_numpy_array_data(file_path: str) -> np.array:
     
 
 
-def evaluate_models(X_train, y_train,X_test,y_test,models,param):
+def evaluate_models(X_train, y_train, X_test, y_test, models, param):
     """
     Evaluate multiple models using GridSearchCV and return their scores.
     """
@@ -105,11 +105,11 @@ def evaluate_models(X_train, y_train,X_test,y_test,models,param):
         report = {}
         for i in range(len(list(models))):
             model = list(models.values())[i]
-            para=param[list(models.keys())[i]]
-            gs = GridSearchCV(model,para,cv=3)
-            gs.fit(X_train,y_train)
+            para = param[list(models.keys())[i]]
+            gs = GridSearchCV(model, para, cv=3)  # cross validation with 3 folds
+            gs.fit(X_train, y_train)
             model.set_params(**gs.best_params_)
-            model.fit(X_train,y_train)
+            model.fit(X_train, y_train)
 
             #model.fit(X_train, y_train)  # Train model
             y_train_pred = model.predict(X_train)
