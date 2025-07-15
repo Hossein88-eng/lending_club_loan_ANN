@@ -4,7 +4,8 @@ from project_package.exception.exception import ProjectException
 from project_package.logging.logger import logging
 from project_package.components.data_ingestion import DataIngestion
 from project_package.components.data_validation import DataValidation
-from project_package.entity.config_entity import DataIngestionConfig, DataValidationConfig
+from project_package.components.data_transformation import DataTransformation
+from project_package.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig
 from project_package.entity.config_entity import TrainingPipelineConfig
 
 
@@ -13,16 +14,24 @@ if __name__=='__main__':
         trainingpipelineconfig=TrainingPipelineConfig()
         dataingestionconfig=DataIngestionConfig(trainingpipelineconfig)
         data_ingestion=DataIngestion(dataingestionconfig)
-        logging.info("Initiate the data ingestion...")
+        logging.info("Data ingestion started...")
         dataingestionartifact=data_ingestion.initiate_data_ingestion()
-        logging.info("Data Initiation Completed")
+        logging.info("Data ingestion completed")
         print(dataingestionartifact)
+        
         data_validation_config = DataValidationConfig(trainingpipelineconfig)
         data_validation=DataValidation(dataingestionartifact, data_validation_config)
-        logging.info("Initiate the data validation...")
+        logging.info("Data validation started...")
         data_validation_artifact=data_validation.initiate_data_validation()
-        logging.info("Data Validation Completed")
+        logging.info("Data validation completed")
         print(data_validation_artifact)
+
+        data_transformation_config = DataTransformationConfig(trainingpipelineconfig)
+        data_transformation = DataTransformation(data_validation_artifact, data_transformation_config)
+        logging.info("Data transformation started...")
+        data_transformation_artifact = data_transformation.initiate_data_transformation()
+        logging.info("Data transformation completed")
+        print(data_transformation_artifact)
 
     except Exception as e:
            raise ProjectException(e,sys)
