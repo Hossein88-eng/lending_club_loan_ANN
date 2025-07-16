@@ -100,23 +100,41 @@ def load_numpy_array_data(file_path: str) -> np.array:
 def evaluate_models(X_train, y_train, X_test, y_test, models, param):
     """
     Evaluate multiple models using GridSearchCV and return their scores.
+    Logs progress and captures model-specific exceptions.
     """
     try:
         report = {}
-        for i in range(len(list(models))):
-            model = list(models.values())[i]
-            para = param[list(models.keys())[i]]
-            gs = GridSearchCV(model, para, cv=3)  # cross validation with 3 folds
-            gs.fit(X_train, y_train)
-            model.set_params(**gs.best_params_)
-            model.fit(X_train, y_train)
 
-            #model.fit(X_train, y_train)  # Train model
-            y_train_pred = model.predict(X_train)
-            y_test_pred = model.predict(X_test)
-            train_model_score = r2_score(y_train, y_train_pred)
-            test_model_score = r2_score(y_test, y_test_pred)
-            report[list(models.keys())[i]] = test_model_score
+        for model_name, model in models.items():
+            logging.info(f"Starting GridSearch for model: {model_name}")
+            print(f"Trying model: {model_name}")
+
+            try:
+                param_grid = param.get(model_name, {})
+                gs = GridSearchCV(estimator=model, param_grid=param_grid, cv=3, error_score="raise")
+                gs.fit(X_train, y_train)
+
+                best_model = gs.best_estimator_
+                logging.info(f"{model_name} - Best params: {gs.best_params_}")
+
+                # Evaluate
+                y_train_pred = best_model.predict(X_train)
+                y_test_pred = best_model.predict(X_test)
+
+                train_score = r2_score(y_train, y_train_pred)
+                test_score = r2_score(y_test, y_test_pred)
+
+                logging.info(f"{model_name} - Train R2: {train_score:.4f}, Test R2: {test_score:.4f}")
+                report[model_name] = test_score
+
+                # Update model dict with trained version
+                models[model_name] = best_model
+
+            except Exception as model_err:
+                logging.error(f"Model '{model_name}' failed: {model_err}")
+                report[model_name] = float("-inf")
+
         return report
+
     except Exception as e:
         raise ProjectException(e, sys)
