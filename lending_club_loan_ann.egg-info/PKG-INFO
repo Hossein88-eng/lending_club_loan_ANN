@@ -1,4 +1,4 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.4
 Name: lending_club_loan_ann
 Version: 0.1
 Author: Hossein Beidaghydizaji
@@ -12,10 +12,13 @@ Requires-Dist: matplotlib
 Requires-Dist: seaborn
 Requires-Dist: python-dotenv
 Requires-Dist: pymongo[srv]==3.6
-Requires-Dist: pymongo
 Requires-Dist: certifi
 Requires-Dist: dill
 Requires-Dist: scipy
 Requires-Dist: pyaml
 Requires-Dist: tensorflow==2.17.0
 Requires-Dist: mlflow
+Dynamic: author
+Dynamic: author-email
+Dynamic: license-file
+Dynamic: requires-dist

@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 from matplotlib import axis
 from sklearn.metrics import r2_score
 from sklearn.preprocessing import MinMaxScaler
-import tensorflow as tf
+import tensorflow as tf    # Should be Python 3.8–3.10 for TensorFlow 2.17.0.
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
 from sklearn.linear_model import LogisticRegression
@@ -93,33 +93,50 @@ class ModelTrainer:
         # Define hyperparameters for each model
         params={
             "Decision Tree": {
-                'criterion':['gini', 'entropy', 'log_loss'],
-                # 'splitter':['best','random'],
-                # 'max_features':['sqrt','log2'],
+                #'criterion':['gini', 'entropy', 'log_loss'],
+                ## 'splitter':['best', 'random'],
+                ## 'max_features':['sqrt', 'log2'],
+
+                'criterion':['gini', 'entropy']
             },
             "Random Forest":{
-                # 'criterion':['gini', 'entropy', 'log_loss'],
-                # 'max_features':['sqrt','log2',None],
-                'n_estimators': [8,16,32,128,256]
+                ## 'criterion':['gini', 'entropy', 'log_loss'],
+                ## 'max_features':['sqrt', 'log2', None],
+                #'n_estimators': [8, 16, 32, 128, 256]
+
+                'n_estimators': [8, 256]
             },
             "Gradient Boosting":{
-                # 'loss':['log_loss', 'exponential'],
-                'learning_rate':[.1,.01,.05,.001],
-                'subsample':[0.6,0.7,0.75,0.85,0.9],
-                # 'criterion':['squared_error', 'friedman_mse'],
-                # 'max_features':['auto','sqrt','log2'],
-                'n_estimators': [8,16,32,64,128,256]
+                ## 'loss':['log_loss', 'exponential'],
+                #'learning_rate':[0.1, 0.01, 0.05, 0.001],
+                #'subsample':[0.6, 0.7, 0.75, 0.85, 0.9],
+                ## 'criterion':['squared_error', 'friedman_mse'],
+                ## 'max_features':['auto', 'sqrt', 'log2'],
+                #'n_estimators': [8, 16, 32, 64, 128, 256]
+
+                'learning_rate':[0.1, 0.001],
+                'subsample':[0.6, 0.9],
+                'n_estimators': [8, 256]
             },
             "Logistic Regression":{},
             "AdaBoost":{
-                'learning_rate':[.1,.01,.001],
-                'n_estimators': [8,16,32,64,128,256]
+                #'learning_rate':[0.1, 0.01, 0.001],
+                #'n_estimators': [8, 16, 32, 64, 128, 256]
+
+                'learning_rate':[0.1, 0.001],
+                'n_estimators': [8, 256]
             },
             "ANN Model": {
-                'epochs': [25, 50, 75],
-                'batch_size': [64, 128, 256],
-                'learning_rate': [0.001, 0.01, 0.1],
-                'optimizer': ['adam', 'sgd', 'rmsprop'],
+                #'epochs': [25, 50, 75],
+                #'batch_size': [64, 128, 256],
+                #'learning_rate': [0.001, 0.01, 0.1],
+                #'optimizer': ['adam', 'sgd', 'rmsprop'],
+                #'loss': ['binary_crossentropy']
+
+                'epochs': [10],
+                'batch_size': [64, 256],
+                'learning_rate': [0.001, 0.1],
+                'optimizer': ['adam'],
                 'loss': ['binary_crossentropy']
             }
         }
