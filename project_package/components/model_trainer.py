@@ -1,26 +1,34 @@
+
 import os
 import sys
-import mlflow
+import pandas as pd
 import numpy as np
+import mlflow
+import mlflow.sklearn
+from dotenv import load_dotenv
 from urllib.parse import urlparse
-from matplotlib import axis
-from sklearn.metrics import r2_score
+import matplotlib.pyplot as plt
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from sklearn.preprocessing import MinMaxScaler
 import tensorflow as tf    # Should be Python 3.8–3.10 for TensorFlow 2.17.0.
+from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout
+from tensorflow.keras.layers import Dense, Dropout, InputLayer
+from scikeras.wrappers import KerasClassifier
+from functools import partial
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import AdaBoostClassifier, GradientBoostingClassifier, RandomForestClassifier
-#pip install --upgrade pymongoimport dagshub
-#dagshub.init(repo_owner='Hossein88-eng', repo_name='lending_club_loan_ANN', mlflow=True)
+
 
 from project_package.exception.exception import ProjectException 
 from project_package.logging.logger import logging
 from project_package.constants.training_pipeline import TARGET_COLUMN
 from project_package.entity.artifact_entity import DataTransformationArtifact, ModelTrainerArtifact
 from project_package.entity.config_entity import ModelTrainerConfig
+from project_package.utils.ml_utils import model
 from project_package.utils.ml_utils.model.estimator import ML_DL_Ops_Model
 from project_package.utils.main_utils.utils import save_object, load_object
 from project_package.utils.main_utils.utils import load_numpy_array_data, evaluate_models
@@ -29,9 +37,23 @@ from project_package.utils.ml_utils.metric.classification_metric import get_clas
 
 
 
+load_dotenv()
+
 #os.environ["MLFLOW_TRACKING_URI"]="https://github.com/Hossein88-eng/lending_club_loan_ANN"
 #os.environ["MLFLOW_TRACKING_USERNAME"]="Hossein88-eng"
 #os.environ["MLFLOW_TRACKING_PASSWORD"]="7104284f1bb44ece21e0e2adb4e36a250ae3251f"
+
+
+
+
+def build_model(input_shape):
+    print("Model received input_shape =", input_shape)
+    model = Sequential()
+    model.add(InputLayer(input_shape=input_shape))
+    model.add(Dense(64, activation='relu'))
+    model.add(Dense(1, activation='sigmoid'))
+    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    return model
 
 
 class ModelTrainer:
@@ -41,7 +63,27 @@ class ModelTrainer:
             self.data_transformation_artifact = data_transformation_artifact
         except Exception as e:
             raise ProjectException(e,sys)
-        
+
+
+    """
+    def build_model(self, input_shape, layers=[64, 32], activation="relu", output_activation="sigmoid", learning_rate=0.001):
+        try:
+            print("Model received input_shape =", input_shape)
+            model = Sequential()
+            model.add(Dense(layers[0], input_shape=(input_shape,), activation=activation))
+            for units in layers[1:]:
+                model.add(Dense(units, activation=activation))
+            model.add(Dense(1, activation=output_activation))
+            model.compile(
+                loss="binary_crossentropy",
+                optimizer=Adam(learning_rate=learning_rate),
+                metrics=["accuracy"]
+            )
+            return model
+        except Exception as e:
+            raise ProjectException(e, sys)
+    """
+
     def track_mlflow(self, best_model, classificationmetric):
         mlflow.set_registry_uri("https://github.com/Hossein88-eng/lending_club_loan_ANN")
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
@@ -74,21 +116,12 @@ class ModelTrainer:
                 "Random Forest": RandomForestClassifier(verbose=1),
                 "Decision Tree": DecisionTreeClassifier(),
                 "Gradient Boosting": GradientBoostingClassifier(verbose=1),
-                "Logistic Regression": LogisticRegression(verbose=1),
+                "Logistic Regression": LogisticRegression(max_iter=1000),
                 "AdaBoost": AdaBoostClassifier(),
                 #"KNeighbors Classifier": KNeighborsClassifier(),
 
                 # DL models
-                "ANN Model": tf.keras.models.Sequential([
-                    tf.keras.layers.Dense(units=78, activation='relu'),
-                    tf.keras.layers.Dropout(0.2),
-                    tf.keras.layers.Dense(units=39, activation='relu'),
-                    tf.keras.layers.Dropout(0.2),
-                    tf.keras.layers.Dense(19, activation='relu'),
-                    tf.keras.layers.Dropout(0.2),
-                    tf.keras.layers.Dense(units=1, activation='sigmoid')
-                ])
-
+                "Neural Network": KerasClassifier(model=build_model, input_shape=(X_train.shape[1],))
             }
         # Define hyperparameters for each model
         params={
@@ -126,20 +159,18 @@ class ModelTrainer:
                 'learning_rate':[0.1, 0.001],
                 'n_estimators': [8, 256]
             },
-            "ANN Model": {
-                #'epochs': [25, 50, 75],
-                #'batch_size': [64, 128, 256],
-                #'learning_rate': [0.001, 0.01, 0.1],
-                #'optimizer': ['adam', 'sgd', 'rmsprop'],
-                #'loss': ['binary_crossentropy']
+            "Neural Network": {
+            ##"model__learning_rate": [0.001, 0.01],
+            ##"model__optimizer": ["adam"],
+            ##"epochs": [10, 20],
+            ##"batch_size": [32]
 
-                'epochs': [10],
-                'batch_size': [64, 256],
-                'learning_rate': [0.001, 0.1],
-                'optimizer': ['adam'],
-                'loss': ['binary_crossentropy']
+            "batch_size": [32, 64],
+            "epochs": [10]
             }
         }
+        logging.info("Evaluating models...")
+
         model_report:dict=evaluate_models(X_train=X_train, y_train=y_train, X_test=x_test, y_test=y_test,
                                           models=models, param=params)
 

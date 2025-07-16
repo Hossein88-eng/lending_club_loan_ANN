@@ -1,2 +1,4 @@
 import tensorflow as tf
-print(tf.__version__)
+import scikeras
+
+print(scikeras.__version__)

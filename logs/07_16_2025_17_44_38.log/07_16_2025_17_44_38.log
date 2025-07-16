@@ -1,0 +1,31 @@
+[ 2025-07-16 17:44:44,920 ] 20 root - INFO - Data ingestion started...
+[ 2025-07-16 17:44:49,023 ] 96 pymongo.serverSelection - INFO - {"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 6877c8f1a176b5ea27b2526b, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-4xwvsju-shard-00-00.jf4afae.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-4xwvsju-shard-00-01.jf4afae.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-4xwvsju-shard-00-02.jf4afae.mongodb.net', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "6877c8f1a176b5ea27b2526b"}, "remainingTimeMS": 30}
+[ 2025-07-16 17:44:53,410 ] 74 root - INFO - Performed train test split on the dataframe...
+[ 2025-07-16 17:44:53,410 ] 75 root - INFO - Train set shape: (31682, 77)
+[ 2025-07-16 17:44:53,410 ] 76 root - INFO - Test set shape: (7921, 77)
+[ 2025-07-16 17:44:53,410 ] 80 root - INFO - Exporting train and test file path...
+[ 2025-07-16 17:44:53,985 ] 87 root - INFO - Exported train and test file path.
+[ 2025-07-16 17:44:53,985 ] 22 root - INFO - Data ingestion completed
+[ 2025-07-16 17:44:54,001 ] 27 root - INFO - Data validation started...
+[ 2025-07-16 17:44:54,214 ] 46 root - INFO - Required number of columns: 2
+[ 2025-07-16 17:44:54,214 ] 47 root - INFO - Data frame has columns: 77
+[ 2025-07-16 17:44:54,214 ] 46 root - INFO - Required number of columns: 2
+[ 2025-07-16 17:44:54,214 ] 47 root - INFO - Data frame has columns: 77
+[ 2025-07-16 17:44:55,462 ] 29 root - INFO - Data validation completed
+[ 2025-07-16 17:44:55,462 ] 34 root - INFO - Data transformation started...
+[ 2025-07-16 17:44:55,462 ] 55 root - INFO - Entered initiate_data_transformation method of DataTransformation class
+[ 2025-07-16 17:44:55,462 ] 57 root - INFO - Starting data transformation...
+[ 2025-07-16 17:44:55,635 ] 65 root - INFO - Entered the save_object method of MainUtils class
+[ 2025-07-16 17:44:55,637 ] 69 root - INFO - Exited the save_object method of MainUtils class
+[ 2025-07-16 17:44:55,690 ] 45 root - INFO - Entered get_data_transformer_object method of Transformation class
+[ 2025-07-16 17:44:55,690 ] 48 root - INFO - Initialise KNNImputer with {'missing_values': nan, 'n_neighbors': 3, 'weights': 'uniform'}
+[ 2025-07-16 17:44:55,844 ] 65 root - INFO - Entered the save_object method of MainUtils class
+[ 2025-07-16 17:44:55,860 ] 69 root - INFO - Exited the save_object method of MainUtils class
+[ 2025-07-16 17:44:55,860 ] 65 root - INFO - Entered the save_object method of MainUtils class
+[ 2025-07-16 17:44:55,889 ] 69 root - INFO - Exited the save_object method of MainUtils class
+[ 2025-07-16 17:44:55,893 ] 36 root - INFO - Data transformation completed
+[ 2025-07-16 17:44:55,893 ] 39 root - INFO - Model training started...
+[ 2025-07-16 17:44:55,921 ] 225 root - INFO - Normalizing the data started...
+[ 2025-07-16 17:44:55,946 ] 229 root - INFO - Normalization of data completed successfully.
+[ 2025-07-16 17:44:55,946 ] 237 root - INFO - X_train: (31682, 76), y_train: (31682,), X_test: (7921, 76), y_test: (7921,)
+[ 2025-07-16 17:44:55,946 ] 240 root - INFO - Training the model stated...
