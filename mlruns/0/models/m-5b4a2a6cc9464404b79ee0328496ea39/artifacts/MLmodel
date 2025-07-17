@@ -1,0 +1,22 @@
+artifact_path: file:///C:/Users/MICROSOFT%20SURFACE/OneDrive/Documents/GitHub/lending_club_loan_ANN/mlruns/0/models/m-5b4a2a6cc9464404b79ee0328496ea39/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.9.13
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.3.2
+mlflow_version: 3.1.1
+model_id: m-5b4a2a6cc9464404b79ee0328496ea39
+model_size_bytes: 343769
+model_uuid: m-5b4a2a6cc9464404b79ee0328496ea39
+prompts: null
+run_id: b4c689d38d56435b92b45dfac274471e
+utc_time_created: '2025-07-17 10:08:46.732505'

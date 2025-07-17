@@ -1,7 +1,7 @@
 ipykernel
 pandas
 numpy
-scikit-learn<1.4,>=1.2
+scikit-learn==1.3.2
 matplotlib
 seaborn
 python-dotenv
@@ -12,4 +12,5 @@ scipy
 pyaml
 tensorflow==2.17.0
 mlflow
+dagshub
 scikeras==0.11.0

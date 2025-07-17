@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 import mlflow
 import mlflow.sklearn
+import dagshub
 from dotenv import load_dotenv
 from urllib.parse import urlparse
 import matplotlib.pyplot as plt
@@ -39,10 +40,8 @@ from project_package.utils.ml_utils.metric.classification_metric import get_clas
 
 load_dotenv()
 
-#os.environ["MLFLOW_TRACKING_URI"]="https://github.com/Hossein88-eng/lending_club_loan_ANN"
-#os.environ["MLFLOW_TRACKING_USERNAME"]="Hossein88-eng"
-#os.environ["MLFLOW_TRACKING_PASSWORD"]="7104284f1bb44ece21e0e2adb4e36a250ae3251f"
-
+# Initialize DagsHub for tracking
+#dagshub.init(repo_owner='Hossein88-eng', repo_name='lending_club_loan_ANN', mlflow=True)
 
 
 
@@ -84,6 +83,7 @@ class ModelTrainer:
     """
 
     def track_mlflow(self, best_model, classificationmetric):
+        #mlflow.set_registry_uri("https://dagshub.com/Hossein88-eng/lending_club_loan_ANN")
         mlflow.set_registry_uri("https://github.com/Hossein88-eng/lending_club_loan_ANN")
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
         with mlflow.start_run():
@@ -173,10 +173,7 @@ class ModelTrainer:
                 ##"batch_size": [32]
 
                 "batch_size": [32, 64], 
-                "epochs": [10],
-                "optimizer": ["adam"],
-                "loss": ["binary_crossentropy"],
-                "metrics": [["accuracy"]]
+                "epochs": [10]
             }
         }
         logging.info("Evaluating models...")
@@ -197,12 +194,14 @@ class ModelTrainer:
         classification_train_metric = get_classification_score(y_true=y_train, y_pred=y_train_pred)
 
         # Track the experiements with mlflow
-        self.track_mlflow(best_model, classification_train_metric)
+        if best_model_name != "Neural Network":
+            self.track_mlflow(best_model, classification_train_metric)
 
         y_test_pred = best_model.predict(x_test)
         classification_test_metric = get_classification_score(y_true=y_test, y_pred=y_test_pred)
 
-        self.track_mlflow(best_model, classification_test_metric)
+        if best_model_name != "Neural Network":
+            self.track_mlflow(best_model, classification_test_metric)
 
         preprocessor = load_object(file_path=self.data_transformation_artifact.transformed_object_file_path)
             

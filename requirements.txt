@@ -12,6 +12,7 @@ scipy
 pyaml
 tensorflow==2.17.0
 mlflow
+dagshub
 scikeras==0.11.0
 
 
