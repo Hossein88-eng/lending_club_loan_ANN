@@ -1,0 +1,80 @@
+[ 2025-07-17 10:44:10,285 ] 20 root - INFO - Data ingestion started...
+[ 2025-07-17 10:44:14,413 ] 96 pymongo.serverSelection - INFO - {"message": "Waiting for suitable server to become available", "selector": "Primary()", "operation": "find", "topologyDescription": "<TopologyDescription id: 6878b7dea62e2d82722b5cb8, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-4xwvsju-shard-00-00.jf4afae.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-4xwvsju-shard-00-01.jf4afae.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-4xwvsju-shard-00-02.jf4afae.mongodb.net', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "6878b7dea62e2d82722b5cb8"}, "remainingTimeMS": 30}
+[ 2025-07-17 10:44:18,755 ] 74 root - INFO - Performed train test split on the dataframe...
+[ 2025-07-17 10:44:18,755 ] 75 root - INFO - Train set shape: (31682, 77)
+[ 2025-07-17 10:44:18,755 ] 76 root - INFO - Test set shape: (7921, 77)
+[ 2025-07-17 10:44:18,755 ] 80 root - INFO - Exporting train and test file path...
+[ 2025-07-17 10:44:19,342 ] 87 root - INFO - Exported train and test file path.
+[ 2025-07-17 10:44:19,342 ] 22 root - INFO - Data ingestion completed
+[ 2025-07-17 10:44:19,357 ] 27 root - INFO - Data validation started...
+[ 2025-07-17 10:44:19,563 ] 46 root - INFO - Required number of columns: 2
+[ 2025-07-17 10:44:19,563 ] 47 root - INFO - Data frame has columns: 77
+[ 2025-07-17 10:44:19,563 ] 46 root - INFO - Required number of columns: 2
+[ 2025-07-17 10:44:19,563 ] 47 root - INFO - Data frame has columns: 77
+[ 2025-07-17 10:44:20,748 ] 29 root - INFO - Data validation completed
+[ 2025-07-17 10:44:20,748 ] 34 root - INFO - Data transformation started...
+[ 2025-07-17 10:44:20,748 ] 55 root - INFO - Entered initiate_data_transformation method of DataTransformation class
+[ 2025-07-17 10:44:20,748 ] 57 root - INFO - Starting data transformation...
+[ 2025-07-17 10:44:20,921 ] 65 root - INFO - Entered the save_object method of MainUtils class
+[ 2025-07-17 10:44:20,921 ] 69 root - INFO - Exited the save_object method of MainUtils class
+[ 2025-07-17 10:44:20,969 ] 45 root - INFO - Entered get_data_transformer_object method of Transformation class
+[ 2025-07-17 10:44:20,969 ] 48 root - INFO - Initialise KNNImputer with {'missing_values': nan, 'n_neighbors': 3, 'weights': 'uniform'}
+[ 2025-07-17 10:44:21,112 ] 65 root - INFO - Entered the save_object method of MainUtils class
+[ 2025-07-17 10:44:21,128 ] 69 root - INFO - Exited the save_object method of MainUtils class
+[ 2025-07-17 10:44:21,128 ] 65 root - INFO - Entered the save_object method of MainUtils class
+[ 2025-07-17 10:44:21,144 ] 69 root - INFO - Exited the save_object method of MainUtils class
+[ 2025-07-17 10:44:21,144 ] 36 root - INFO - Data transformation completed
+[ 2025-07-17 10:44:21,144 ] 39 root - INFO - Model training started...
+[ 2025-07-17 10:44:21,164 ] 236 root - INFO - Normalizing the data started...
+[ 2025-07-17 10:44:21,182 ] 240 root - INFO - Normalization of data completed successfully.
+[ 2025-07-17 10:44:21,182 ] 248 root - INFO - X_train: (31682, 76), y_train: (31682,), X_test: (7921, 76), y_test: (7921,)
+[ 2025-07-17 10:44:21,182 ] 251 root - INFO - Training the model stated...
+[ 2025-07-17 10:44:21,182 ] 182 root - INFO - Evaluating models...
+[ 2025-07-17 10:44:21,182 ] 109 root - INFO - Starting GridSearch for model: Random Forest
+[ 2025-07-17 10:45:02,068 ] 118 root - INFO - Random Forest - Best params: {'n_estimators': 256}
+[ 2025-07-17 10:45:02,889 ] 127 root - INFO - Random Forest - Train F1 score: 1.0000, Test F1 score: 0.9126
+[ 2025-07-17 10:45:02,889 ] 109 root - INFO - Starting GridSearch for model: Decision Tree
+[ 2025-07-17 10:45:03,547 ] 118 root - INFO - Decision Tree - Best params: {'criterion': 'entropy'}
+[ 2025-07-17 10:45:03,562 ] 127 root - INFO - Decision Tree - Train F1 score: 1.0000, Test F1 score: 0.9924
+[ 2025-07-17 10:45:03,562 ] 109 root - INFO - Starting GridSearch for model: Gradient Boosting
+[ 2025-07-17 10:48:43,740 ] 118 root - INFO - Gradient Boosting - Best params: {'learning_rate': 0.1, 'n_estimators': 256, 'subsample': 0.9}
+[ 2025-07-17 10:48:43,848 ] 127 root - INFO - Gradient Boosting - Train F1 score: 1.0000, Test F1 score: 1.0000
+[ 2025-07-17 10:48:43,848 ] 109 root - INFO - Starting GridSearch for model: Logistic Regression
+[ 2025-07-17 10:48:45,221 ] 118 root - INFO - Logistic Regression - Best params: {}
+[ 2025-07-17 10:48:45,241 ] 127 root - INFO - Logistic Regression - Train F1 score: 0.2024, Test F1 score: 0.0803
+[ 2025-07-17 10:48:45,241 ] 109 root - INFO - Starting GridSearch for model: AdaBoost
+[ 2025-07-17 10:49:59,483 ] 118 root - INFO - AdaBoost - Best params: {'learning_rate': 0.1, 'n_estimators': 256}
+[ 2025-07-17 10:50:01,610 ] 127 root - INFO - AdaBoost - Train F1 score: 0.9918, Test F1 score: 0.9924
+[ 2025-07-17 10:50:01,610 ] 109 root - INFO - Starting GridSearch for model: Neural Network
+[ 2025-07-17 10:50:09,981 ] 134 root - ERROR - Model 'Neural Network' failed: Could not interpret metric identifier: loss
+[ 2025-07-17 10:50:10,143 ] 23 root - INFO - F1 Score: 1.0, Precision Score: 1.0, Recall Score: 1.0, Accuracy Score: 1.0, Confusion Matrix: [[30947     0]
+ [    0   735]], 
+Classification Report:               precision    recall  f1-score   support
+
+         0.0       1.00      1.00      1.00     30947
+         1.0       1.00      1.00      1.00       735
+
+    accuracy                           1.00     31682
+   macro avg       1.00      1.00      1.00     31682
+weighted avg       1.00      1.00      1.00     31682
+
+[ 2025-07-17 10:50:17,681 ] 23 root - INFO - F1 Score: 1.0, Precision Score: 1.0, Recall Score: 1.0, Accuracy Score: 1.0, Confusion Matrix: [[7723    0]
+ [   0  198]], 
+Classification Report:               precision    recall  f1-score   support
+
+         0.0       1.00      1.00      1.00      7723
+         1.0       1.00      1.00      1.00       198
+
+    accuracy                           1.00      7921
+   macro avg       1.00      1.00      1.00      7921
+weighted avg       1.00      1.00      1.00      7921
+
+[ 2025-07-17 10:50:23,477 ] 65 root - INFO - Entered the save_object method of MainUtils class
+[ 2025-07-17 10:50:23,497 ] 69 root - INFO - Exited the save_object method of MainUtils class
+[ 2025-07-17 10:50:23,497 ] 65 root - INFO - Entered the save_object method of MainUtils class
+[ 2025-07-17 10:50:23,497 ] 69 root - INFO - Exited the save_object method of MainUtils class
+[ 2025-07-17 10:50:23,503 ] 223 root - INFO - Model trainer artifact: ModelTrainerArtifact(trained_model_file_path='Artifacts\\07_17_2025_10_44_05\\model_trainer\\trained_model\\model.pkl', train_metric_artifact=ClassificationMetricArtifact(f1_score=1.0, precision_score=1.0, recall_score=1.0, accuracy_score=1.0, confusion_matrix=array([[30947,     0],
+       [    0,   735]], dtype=int64), classification_report='              precision    recall  f1-score   support\n\n         0.0       1.00      1.00      1.00     30947\n         1.0       1.00      1.00      1.00       735\n\n    accuracy                           1.00     31682\n   macro avg       1.00      1.00      1.00     31682\nweighted avg       1.00      1.00      1.00     31682\n'), test_metric_artifact=ClassificationMetricArtifact(f1_score=1.0, precision_score=1.0, recall_score=1.0, accuracy_score=1.0, confusion_matrix=array([[7723,    0],
+       [   0,  198]], dtype=int64), classification_report='              precision    recall  f1-score   support\n\n         0.0       1.00      1.00      1.00      7723\n         1.0       1.00      1.00      1.00       198\n\n    accuracy                           1.00      7921\n   macro avg       1.00      1.00      1.00      7921\nweighted avg       1.00      1.00      1.00      7921\n'))
+[ 2025-07-17 10:50:23,507 ] 253 root - INFO - Training the model completed successfully.
+[ 2025-07-17 10:50:23,510 ] 43 root - INFO - Model training completed!
