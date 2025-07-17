@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/MICROSOFT%20SURFACE/OneDrive/Documents/GitHub/lending_club_loan_ANN/mlruns/0/models/m-466977bc18904caaa3e55b27fb3ac44b/artifacts
+creation_timestamp: 1752738489467
+experiment_id: '0'
+last_updated_timestamp: 1752738491939
+model_id: m-466977bc18904caaa3e55b27fb3ac44b
+model_type: null
+name: model
+source_run_id: fa34b41fa1104e37b9a66169074c62db
+status: 2
+status_message: null

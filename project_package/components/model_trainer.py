@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from urllib.parse import urlparse
 import matplotlib.pyplot as plt
 from sklearn.svm import SVC
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score, confusion_matrix, classification_report
 from sklearn.preprocessing import MinMaxScaler
 import tensorflow as tf    # Should be Python 3.8–3.10 for TensorFlow 2.17.0.
 from tensorflow.keras.optimizers import Adam
@@ -52,7 +52,6 @@ def build_model(input_shape):
     model.add(InputLayer(input_shape=input_shape))
     model.add(Dense(64, activation='relu'))
     model.add(Dense(1, activation='sigmoid'))
-    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
     return model
 
 
@@ -121,7 +120,15 @@ class ModelTrainer:
                 #"KNeighbors Classifier": KNeighborsClassifier(),
 
                 # DL models
-                "Neural Network": KerasClassifier(model=build_model, input_shape=(X_train.shape[1],))
+                #"Neural Network": KerasClassifier(model=build_model, input_shape=(X_train.shape[1],))
+                "Neural Network": KerasClassifier(
+                model=build_model,
+                model__input_shape=(X_train.shape[1],),
+                loss="binary_crossentropy",
+                optimizer="adam",
+                metrics=["accuracy"],
+                verbose=1
+                )
             }
         # Define hyperparameters for each model
         params={
@@ -160,13 +167,16 @@ class ModelTrainer:
                 'n_estimators': [8, 256]
             },
             "Neural Network": {
-            ##"model__learning_rate": [0.001, 0.01],
-            ##"model__optimizer": ["adam"],
-            ##"epochs": [10, 20],
-            ##"batch_size": [32]
+                ##"model__learning_rate": [0.001, 0.01],
+                ##"model__optimizer": ["adam"],
+                ##"epochs": [10, 20],
+                ##"batch_size": [32]
 
-            "batch_size": [32, 64],
-            "epochs": [10]
+                "batch_size": [32, 64], 
+                "epochs": [10],
+                "optimizer": ["adam"],
+                "loss": ["binary_crossentropy"],
+                "metrics": [["accuracy"]]
             }
         }
         logging.info("Evaluating models...")

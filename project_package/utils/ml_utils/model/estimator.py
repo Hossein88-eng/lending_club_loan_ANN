@@ -20,4 +20,4 @@ class ML_DL_Ops_Model:
             y_hat = self.model.predict(x_transform)
             return y_hat
         except Exception as e:
-            raise ProjectException(e, sys)
+            raise ProjectException(e, sys)        

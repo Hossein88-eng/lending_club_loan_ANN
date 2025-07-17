@@ -3,7 +3,7 @@ import os,sys
 import numpy as np
 import dill
 import pickle
-from sklearn.metrics import r2_score
+from sklearn.metrics import r2_score, accuracy_score, f1_score
 from sklearn.model_selection import GridSearchCV
 
 from project_package.exception.exception import ProjectException
@@ -121,10 +121,10 @@ def evaluate_models(X_train, y_train, X_test, y_test, models, param):
                 y_train_pred = best_model.predict(X_train)
                 y_test_pred = best_model.predict(X_test)
 
-                train_score = r2_score(y_train, y_train_pred)
-                test_score = r2_score(y_test, y_test_pred)
+                train_score = f1_score(y_train, y_train_pred)
+                test_score = f1_score(y_test, y_test_pred)
 
-                logging.info(f"{model_name} - Train R2: {train_score:.4f}, Test R2: {test_score:.4f}")
+                logging.info(f"{model_name} - Train F1 score: {train_score:.4f}, Test F1 score: {test_score:.4f}")
                 report[model_name] = test_score
 
                 # Update model dict with trained version

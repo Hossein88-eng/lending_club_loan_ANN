@@ -25,7 +25,7 @@ def get_classification_score(y_true, y_pred) -> ClassificationMetricArtifact:
             f"Precision Score: {model_precision_score}, "
             f"Recall Score: {model_recall_score}, "
             f"Accuracy Score: {model_accuracy_score}, "
-            f"Confusion Matrix: {model_confusion_matrix}, "
+            f"Confusion Matrix: {model_confusion_matrix}, \n"
             f"Classification Report: {model_classification_report}"
         )
 
