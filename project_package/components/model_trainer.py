@@ -142,9 +142,9 @@ class ModelTrainer:
             "Random Forest":{
                 ## 'criterion':['gini', 'entropy', 'log_loss'],
                 ## 'max_features':['sqrt', 'log2', None],
-                'n_estimators': [8, 16, 32, 128, 256]
+                #'n_estimators': [8, 16, 32, 64, 128, 256]
 
-                #'n_estimators': [8, 256]
+                'n_estimators': [64, 256]
             },
             "Gradient Boosting":{
                 ## 'loss':['log_loss', 'exponential'],
@@ -154,17 +154,17 @@ class ModelTrainer:
                 ## 'max_features':['auto', 'sqrt', 'log2'],
                 #'n_estimators': [8, 16, 32, 64, 128, 256]
 
-                'learning_rate':[0.1, 0.001],
+                'learning_rate':[0.01, 0.001],
                 'subsample':[0.6, 0.9],
-                'n_estimators': [8, 256]
+                'n_estimators': [64, 256]
             },
             "Logistic Regression":{},
             "AdaBoost":{
                 #'learning_rate':[0.1, 0.01, 0.001],
                 #'n_estimators': [8, 16, 32, 64, 128, 256]
 
-                'learning_rate':[0.1, 0.001],
-                'n_estimators': [8, 256]
+                'learning_rate':[0.01, 0.001],
+                'n_estimators': [64, 256]
             },
             "Neural Network": {
                 ##"model__learning_rate": [0.001, 0.01],

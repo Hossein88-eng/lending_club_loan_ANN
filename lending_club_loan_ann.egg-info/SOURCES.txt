@@ -10,6 +10,7 @@ lending_club_loan_ann.egg-info/requires.txt
 lending_club_loan_ann.egg-info/top_level.txt
 project_package/__init__.py
 project_package/cloud/__init__.py
+project_package/cloud/s3_syncer.py
 project_package/components/__init__.py
 project_package/components/data_ingestion.py
 project_package/components/data_transformation.py
@@ -24,7 +25,9 @@ project_package/exception/__init__.py
 project_package/exception/exception.py
 project_package/logging/__init__.py
 project_package/logging/logger.py
-project_package/pipleline/__init__.py
+project_package/pipeline/__init__.py
+project_package/pipeline/batch_prediction.py
+project_package/pipeline/training_pipeline.py
 project_package/utils/__init__.py
 project_package/utils/main_utils/__init__.py
 project_package/utils/main_utils/utils.py
